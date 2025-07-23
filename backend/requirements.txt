@@ -1,2 +1,5 @@
 fastapi
 uvicorn
+flask
+aiohttp
+nest_asyncio
