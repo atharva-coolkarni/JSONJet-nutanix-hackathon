@@ -4,6 +4,7 @@ import subprocess
 
 def execute_shell(task):
     try:
+        log(task.get("task_id"),datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "shell", "running", f"Executing shell: {task.get("command")}")
         if "command" not in task:
             raise ValueError("Missing 'command' in shell task")
 
@@ -13,29 +14,15 @@ def execute_shell(task):
             capture_output=True,
             text=True
         )
-
-        result = {
-            "task_id": task.get("task_id"),
-            "type": "shell",
-            "command": task["command"],
-            "status": "success",
-            "error": None,
-            "stdout": result_process.stdout.strip(),
-            "stderr": result_process.stderr.strip(),
-            "timestamp": str(datetime.now())
-        }
+        
+        stdout = result_process.stdout.strip()
+        stderr = result_process.stderr.strip()
+        if stdout:
+            log(task.get("task_id"),datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "shell", "success", f"Stdout: {stdout}")
+        elif stderr:
+            log(task.get("task_id"),datetime.now().strftime('%Y-%m-%d %H:%M:%S'),"shell", "success", f"Stderr: {stderr}")
+        else:
+            log(task.get("task_id"), datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "success", "No output or error")
     except Exception as e:
-        result = {
-            "task_id": task.get("task_id"),
-            "type": "shell",
-            "status": "error",
-            "error": str(e),
-            "timestamp": str(datetime.now())
-        }
+        log(task.get("task_id"), datetime.now().strftime('%Y-%m-%d %H:%M:%S'),"shell", "error", f"Error: {str(e)}")
 
-    return log(
-        result.get("task_id"),
-        result.get("type"),
-        result.get("status"),
-        f"Status: {result.get('status')}, Error: {result.get('error')}"
-    )
