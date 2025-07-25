@@ -20,7 +20,7 @@ def execute_shell(task):
         if stdout:
             log(task.get("task_id"),datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "shell", "success", f"Stdout: {stdout}")
         elif stderr:
-            log(task.get("task_id"),datetime.now().strftime('%Y-%m-%d %H:%M:%S'),"shell", "success", f"Stderr: {stderr}")
+            log(task.get("task_id"),datetime.now().strftime('%Y-%m-%d %H:%M:%S'),"shell", "error", f"Stderr: {stderr}")
         else:
             log(task.get("task_id"), datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "success", "No output or error")
     except Exception as e:

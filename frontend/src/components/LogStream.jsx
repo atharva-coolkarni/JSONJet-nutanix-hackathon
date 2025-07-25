@@ -66,6 +66,7 @@ function LogStream({ logs, containerHeight = "100%" }) {
               <option value="all">All</option>
               <option value="running">Running</option>
               <option value="success">Success</option>
+              <option value="error">Error</option>
             </select>
           </div>
 
