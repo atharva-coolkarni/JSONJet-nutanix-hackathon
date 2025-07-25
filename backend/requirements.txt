@@ -3,3 +3,4 @@ uvicorn
 flask
 aiohttp
 nest_asyncio
+flask-cors

@@ -4,7 +4,7 @@ import subprocess
 
 def execute_shell(task):
     try:
-        log(task.get("task_id"),datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "shell", "running", f"Executing shell: {task.get("command")}")
+        log(task.get("task_id"), datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "shell", "running", f"Executing shell: {task.get('command')}")
         if "command" not in task:
             raise ValueError("Missing 'command' in shell task")
 

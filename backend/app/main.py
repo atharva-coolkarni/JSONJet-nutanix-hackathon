@@ -1,12 +1,14 @@
-import json
-import time
 from flask import Flask, request, jsonify, Response, stream_with_context
+from flask_cors import CORS
+import time
+import json
 from datetime import datetime
-from utils.logger import log_queue,log
+from utils.logger import log_queue, log
 from engine.types.rest import execute_api
 from engine.types.shell import execute_shell
 
 app = Flask(__name__)
+CORS(app)  # enable CORS for all routes
 
 def run_workflow(workflow):
     for task in workflow.get("tasks", []):
@@ -23,11 +25,9 @@ def run_workflow(workflow):
                 "status": "error",
                 "message": "Unsupported task type"
             })
-            
-# Flask route
+
 @app.route('/execute_workflow', methods=['POST'])
 def execute_workflow():
-
     try:
         workflow = request.get_json()
         if not workflow or "tasks" not in workflow:
@@ -35,14 +35,10 @@ def execute_workflow():
 
         run_workflow(workflow)
 
-        return jsonify({
-            "message": "Workflow executed",
-        })
+        return jsonify({"message": "Workflow executed"})
 
     except Exception as e:
         return jsonify({"error": f"Exception occurred: {str(e)}"}), 500
-
-
 
 @app.route('/stream-logs')
 def stream_logs():

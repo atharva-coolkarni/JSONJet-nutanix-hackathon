@@ -1,11 +1,8 @@
 import React from "react";
 
-function LogStream({ logs, containerHeight = "40vh" }) {
+function LogStream({ logs }) {
   return (
-    <div
-      className="bg-black text-green-400 font-mono p-4 rounded-lg overflow-y-auto shadow-inner border border-gray-800"
-      style={{ height: containerHeight }}
-    >
+    <div className="bg-black text-green-400 font-mono p-4 rounded-lg overflow-y-auto shadow-inner border border-gray-800 h-full">
       <p className="text-base font-semibold text-green-300 mb-2">
         Execution Logs
       </p>
