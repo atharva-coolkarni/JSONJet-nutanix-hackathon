@@ -124,7 +124,9 @@ function LogStream({ logs, containerHeight = "100%" }) {
           filteredLogs.map((logEntry) => (
             <div
               key={logEntry.id}
-              className="mb-1 whitespace-pre-wrap break-words"
+              className={`mb-1 whitespace-pre-wrap break-words ${
+                logEntry.status === "error" ? "text-red-400" : ""
+              }`}
             >
               {logEntry.line}
             </div>

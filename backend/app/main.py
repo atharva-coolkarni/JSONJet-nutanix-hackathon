@@ -4,8 +4,8 @@ import time
 import json
 from datetime import datetime
 from utils.logger import log_queue, log
-from engine.types.rest import execute_api
-from engine.types.shell import execute_shell
+from task_types.rest import execute_api
+from task_types.shell import execute_shell
 
 app = Flask(__name__)
 CORS(app)  # enable CORS for all routes
