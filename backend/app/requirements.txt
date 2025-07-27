@@ -6,7 +6,6 @@ nest_asyncio
 flask-cors
 gunicorn
 requests
-json 
 time
 datetime
 subprocess
