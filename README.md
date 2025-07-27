@@ -32,7 +32,7 @@ JSON Jet is a powerful, extensible Workflow Execution Engine designed to automat
     {
       "task_id": "task3",
       "type": "shell",
-      "command": "ls -l"
+      "command": "dir"
     },
     {
       "task_id": "task4",
