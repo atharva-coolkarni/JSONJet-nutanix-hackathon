@@ -47,8 +47,6 @@ def stream_logs():
             if not log_queue.empty():
                 log_entry = log_queue.get()
                 yield f"data: {json.dumps(log_entry)}\n\n"
-            else:
-                time.sleep(0.2)
     return Response(stream_with_context(generate()), mimetype='text/event-stream')
 
 if __name__ == "__main__":
