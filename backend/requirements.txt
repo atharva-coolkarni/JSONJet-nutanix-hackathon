@@ -4,3 +4,4 @@ flask
 aiohttp
 nest_asyncio
 flask-cors
+gunicorn
