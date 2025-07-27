@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import LogStream from "./LogStream";
 
+const streamLogUrl = import.meta.env.VITE_STREAM_LOG_ENDPOINT;
+const executeWorkflowEndpointUrl = import.meta.env.VITE_EXECUTE_WORKFLOW_ENDPOINT;
+
 function WorkflowEditor() {
   const [jsonText, setJsonText] = useState("");
   const [isValidJson, setIsValidJson] = useState(false);
@@ -71,7 +74,7 @@ function WorkflowEditor() {
       }
 
       eventSourceRef.current = new EventSource(
-        "http://localhost:5000/stream-logs"
+        streamLogUrl
       );
       eventSourceRef.current.onmessage = (event) => {
         const log = JSON.parse(event.data);
@@ -84,7 +87,7 @@ function WorkflowEditor() {
         eventSourceRef.current.close();
       };
 
-      await axios.post("http://localhost:5000/execute_workflow", parsed, {
+    await axios.post(executeWorkflowEndpointUrl, parsed, {
         headers: {
           "Content-Type": "application/json",
         },
