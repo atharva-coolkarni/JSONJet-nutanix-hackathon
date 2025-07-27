@@ -75,20 +75,42 @@ JSON Jet is a powerful, extensible Workflow Execution Engine designed to automat
 - **Persistent Workflows:** Save and manage frequently-used workflows.
 - **Collaboration:** Share logs and workflows with teammates.
 
-## 🖥️ Getting Started
+## 🖥️ Getting Started: Running Locally
 
 1. **Clone the repo**
-2. **Install dependencies:**
+2. **Navigate to backend:**
+   ```
+   cd backend
+   ```
+3. **Install dependencies from requirements.txt:**
+   ```
+   pip install -r requirements.txt
+   ```
+4. **Run main.py:**
+   ```
+   python ./app/main.py
+   ```
+5. **Navigate to frontend:**
+   ```
+   cd ..
+   cd frontend
+   ```
+6. **Install dependencies from frontend:**
 
     ```
     npm install
     ```
 
-3. **Run the development server:**
+6. **Run the development server:**
 
     ```
-    npm start
+    npm run dev
     ```
 
-4. **Open JSON Jet in your browser**
-5. **Paste your workflow JSON and fly!**
+7. **Open JSON Jet in your browser**
+8. **Paste your workflow JSON and fly!**
+
+## 🌐 Deployed Link
+
+[![Live Site](https://img.shields.io/badge/Live%20Site-Online-green?style=for-the-badge)](https://json-jet-nutanix-hackathon.vercel.app/)
+
